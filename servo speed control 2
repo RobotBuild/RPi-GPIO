@@ -1,0 +1,22 @@
+# in terminal type: sudo pigpiod
+
+import RPi.GPIO as GPIO
+import pigpio
+import time
+ 
+servo = 2
+
+while True:
+    X = 500
+    pwm = pigpio.pi() 
+    pwm.set_mode(servo, pigpio.OUTPUT)
+    pwm.set_PWM_frequency( servo, 50 )
+    pwm.set_servo_pulsewidth(servo, 500)
+    time.sleep(3)
+
+    while True:
+        X += 1 # Any value other than 1 will break it.
+        pwm.set_servo_pulsewidth(servo, X)
+        time.sleep(.005)
+        if X == 2499:
+            break
