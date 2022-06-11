@@ -1,0 +1,20 @@
+# In terminal run: sudo pigpiod
+
+import RPi.GPIO as GPIO
+import pigpio
+import time
+ 
+servo = 2
+  
+while True:
+    pwm = pigpio.pi() 
+    pwm.set_mode(servo, pigpio.OUTPUT)
+    pwm.set_PWM_frequency( servo, 50 )
+ 
+    # Enter 500-2500 or 0
+    X = input()
+    int(X)
+    print( "turning" )
+    pwm.set_servo_pulsewidth( servo, X ) 
+    
+ 
