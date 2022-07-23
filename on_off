@@ -1,0 +1,25 @@
+"""
+import RPi.GPIO as GPIO            # import RPi.GPIO
+GPIO.setmode(GPIO.BCM)             # choose BCM or BOARD
+GPIO.setup(port_or_pin, GPIO.IN)   # set port/pin as input
+GPIO.setup(port_or_pin, GPIO.OUT)  # set port/pin as output
+GPIO.output(port_or_pin, 1)        # set port/pin to 1 or True, HIGH/on
+GPIO.output(port_or_pin, 0)        # set port/pin to 0 or False, LOW/off
+i = GPIO.input(port_or_pin)        # read value of port/pin and assign to variable i
+GPIO.cleanup()                     # reset port/pin
+"""
+
+import RPi.GPIO as GPIO
+import time
+
+off = 0
+on = 1
+
+GPIO.setmode(GPIO.BCM)     # sets to rpi gpio pinout numbering
+GPIO.setup(2, GPIO.OUT)    # sets up pin as output
+
+GPIO.output(2, off)        # actual command to turn off
+
+time.sleep(5)              # sleep for 5 sec
+
+GPIO.cleanup()             # reset pin value
